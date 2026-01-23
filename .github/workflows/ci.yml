@@ -47,9 +47,29 @@ jobs:
       run: uv run pytest --junitxml=junit.xml
 
     # Show test results in a developer friendly way
-    - name: Create Test Result Summary
+    - name: Create test result summary
       uses: test-summary/action@v2
       with:
         paths: "junit.xml"
       # ensure this runs even if tests fail
       if: always()
+
+  scan:
+    name: Security Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Scan for secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Scan for vulnerable dependencies
+        run: | 
+          echo "### 🛡️ Security Audit Results" >> $GITHUB_STEP_SUMMARY
+          echo '```text' >> $GITHUB_STEP_SUMMARY
+          uvx uv-secure --config=pyproject.toml | tee -a $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY        

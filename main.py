@@ -5,6 +5,8 @@ from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
 def get_ingredients(recipe_file: Path) -> list[str]:
+    # mySecret = "hyddYR1i2srLYdKa" #gitleaks:allow
+
     if not recipe_file.exists():
         return []
     with open(recipe_file, "r") as f:
