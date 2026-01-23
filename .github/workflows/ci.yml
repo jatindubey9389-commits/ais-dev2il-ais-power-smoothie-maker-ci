@@ -61,13 +61,13 @@ jobs:
 #      # ensure this runs even if tests fail
 #      if: always()
 
-#    - name: Test Report
-#      uses: dorny/test-reporter@v1
-#      if: always()
-#      with:
-#        name: Pytest Results
-#        path: junit.xml
-#        reporter: java-junit # Works perfectly for Python JUnit XML
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Pytest Results
+        path: junit.xml
+        reporter: java-junit # Works perfectly for Python JUnit XML
 
 
 #    - name: Publish Test Results
