@@ -1,6 +1,6 @@
 from pathlib import Path
 import time
-import pyjoke
+import pyjokes
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
