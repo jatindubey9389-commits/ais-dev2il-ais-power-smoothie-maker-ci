@@ -399,7 +399,7 @@ We will use `gitleaks` (https://github.com/gitleaks/gitleaks) to scan our code f
 
 #### Add Secret Scanning to CI
 
-Update the `scan` job in `ci.yml` and add this step:
+Update the `scan` job in `ci.yml` and add this step at the end of the `steps`list:
 
 ```yaml
       - name: Scan for secrets
@@ -409,8 +409,24 @@ Update the `scan` job in `ci.yml` and add this step:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-> **Why GITHUB_TOKEN ?**: `GITHUB_TOKEN` is a special token provided by GitHub Actions that allows the workflow to interact with the GitHub API.
-> `gitleaks-action` uses it to comment on your pull requests. See also https://github.com/gitleaks/gitleaks-action?tab=readme-ov-file#environment-variables
+**What is `GITHUB_TOKEN` ?**: `GITHUB_TOKEN` is a special authentication token provided by GitHub Actions 
+that allows the workflow to interact with the GitHub API. `gitleaks-action` uses it to comment on your 
+pull requests (you can find more information [here](https://github.com/gitleaks/gitleaks-action?tab=readme-ov-file#environment-variables)). 
+`GITHUB_TOKEN` is automatically created for each workflow run and has limited default permissions, which 
+do dot include the permission to commont on pull requests. You therefore need to update the `scan` job in `ci.yml`
+and grant this permission:
+   ```yaml
+     scan:
+       name: Security Checks
+       runs-on: ubuntu-latest
+       permissions:
+         pull-requests: write
+       steps:
+        ...
+   ```
+
+💡You can find more information on `GITHUB_TOKEN` and permissions [here](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token).
+
 
 Now let's leak a secret
 

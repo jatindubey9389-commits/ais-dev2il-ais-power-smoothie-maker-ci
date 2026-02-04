@@ -57,6 +57,8 @@ jobs:
   scan:
     name: Security Checks
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
