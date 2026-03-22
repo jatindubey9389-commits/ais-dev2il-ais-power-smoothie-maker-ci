@@ -19,7 +19,7 @@ We will build upon the `final` codebase of the previous exercise.
 ‼️You've already forked this repository before. We, however, want to start with a completely fresh 
 fork to ensure that no previous configurations interfere with our CI setup. 
 
-1. In your previous fork (https://github.com/<<YOUR USERNAME>>/ais-dev2il-ais-power-smoothie-maker), go to **Settings / General** and scroll 
+1. In your previous fork (https://github.com/<YOUR USERNAME>/ais-dev2il-ais-power-smoothie-maker), go to **Settings / General** and scroll 
 down to the **Danger Zone**. Now hit **Leave fork network**.
 2. Let's fork fresh! Go to [https://github.com/peterrietzler/ais-dev2il-ais-power-smoothie-maker](https://github.com/peterrietzler/ais-dev2il-ais-power-smoothie-maker)
 and fork the repository. Change the name to `ais-dev2il-ais-power-smoothie-maker-ci` and change the description to 
