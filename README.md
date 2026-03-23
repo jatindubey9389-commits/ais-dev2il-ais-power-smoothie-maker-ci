@@ -186,8 +186,12 @@ uvx ruff check .
 ```
 It should show you something like "All checks passed!".
 
-Try to introduce a linting error (e.g., an unused import or an unused variable) and see how 
-`ruff` catches it. Keep the change, so that we can see how this integrates with our CI pipeline. 
+🛑 Something didn't pass? 
+
+🎨 Style your code properly until everything is green! 🟩
+
+If everything works fine out of the box, try to introduce a linting error (e.g., an unused import or an unused variable) and see how 
+`ruff` catches it. (You can keep the change, so that we can see how this integrates with our CI pipeline. 💡)
 
 > **Note:** `uvx` acts like a temporary runner. Instead of installing `ruff` permanently into your project, 
 > `uvx` downloads it on-the-fly, runs it in an isolated environment, and then discards it. This keeps your 
