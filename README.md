@@ -25,6 +25,10 @@ down to the **Danger Zone**. Now hit **Leave fork network**.
 and fork the repository. Change the name to `ais-dev2il-ais-power-smoothie-maker-ci` and change the description to 
 "Reliable smoothie blending using CI".
 **Important**: Uncheck "Copy the `main` branch only". We need the `final` branch!
+3. Now redo step 1 with the new repo in order to make it independent.
+
+> [!NOTE]
+> Forking creates a personal copy of someone else's project on your own GitHub account, allowing you to freely experiment with changes without affecting the original repository. It serves as the starting point for contributing to open-source projects, as it enables you to refine code independently before proposing your updates via a pull request.
 
 ### 2. Prepare Your Branch
 We want to bring the code from the `final` branch into our `main` branch so we can start building the CI pipeline on top of it.
@@ -187,7 +191,8 @@ Try it out on your local machine first:
 uvx ruff check .
 ```
 
-> **Note:** `uvx` acts like a temporary runner. Instead of installing `ruff` permanently into your project, 
+> [!NOTE]
+> `uvx` acts like a temporary runner. Instead of installing `ruff` permanently into your project, 
 > `uvx` downloads it on-the-fly, runs it in an isolated environment, and then discards it. This keeps your 
 > project clean and lightweight
 
@@ -208,7 +213,8 @@ Update your `ci.yml`. Add this step **before** the "Run tests" step:
       run: uvx ruff check . --output-format=github
 ```
 
-> **Tip:** The `--output-format=github` flag is magic! It formats the errors so GitHub can read them. 
+> [!TIP]
+> The `--output-format=github` flag is magic! It formats the errors so GitHub can read them. 
 > This means you'll see the linting errors directly annotated in the action summary on GitHub, not just in the logs.
 
 Now, **commit and push** your changes. 
@@ -217,11 +223,11 @@ Go to the **Actions** tab, examine the failure, and see how Ruff reports the iss
 
 Once you've seen the error, **fix the code** in PyCharm, push again, and watch the pipeline turn green! 🟢
 
+> [!TIP]
 > **Pro Tip 1:** Do you want even faster feedback ? PyCharm inspects your code as you type and highlights linting issues in real-time. Just 
 > open _Problems_ view, select the _File_ tab, open `main.py` and see how PyCharm shows you issues immediately! You can even configure it to 
 > use `ruff` as the linter. Add `ruff` as dev dependency to your project open the PyCharm settings, search for "Ruff", enable it and see how
-> it integrated with the _Problems_ view.
-
+> it integrated with the _Problems_ view.<br><br>
 > **Pro Tip 2:** Tired of arguing about tabs vs. spaces or where to put that curly brace? Let the robot decide! 🤖 
 > Ruff isn't just a critic; it's a cleaner. Run `uvx ruff format .` to instantly beautify your code.
 > Even better: Configure PyCharm (Settings -> Tools -> Ruff) to use Ruff for formatting. Then, hit `Cmd + Option + L` (macOS) 
