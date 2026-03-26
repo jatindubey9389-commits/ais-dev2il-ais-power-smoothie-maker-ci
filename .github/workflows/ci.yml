@@ -7,6 +7,11 @@ on:
   # Run on pull requests targeting the main branch
   pull_request:
     branches: [ "main" ]
+  # Run every night at midnight UTC
+  schedule:
+    - cron: '0 0 * * *'
+  # Allow developers to manually trigger the workflow from the GitHub Actions tab
+  workflow_dispatch:
 
 jobs:
   test:
