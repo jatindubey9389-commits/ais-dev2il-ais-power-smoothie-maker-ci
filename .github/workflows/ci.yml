@@ -36,4 +36,12 @@ jobs:
 
       # Run tests
       - name: Run tests
-        run: uv run pytest
+        run: uv run pytest --junitxml=junit.xml
+
+        # Show test results in a developer friendly way
+      - name: Create test result summary
+        uses: test-summary/action@v2
+        with:
+          paths: "junit.xml"
+        # ensure this runs even if tests fail
+        if: always()
