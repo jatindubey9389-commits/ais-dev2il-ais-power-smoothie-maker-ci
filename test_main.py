@@ -19,7 +19,7 @@ def test_get_ingredients(tmp_path: Path):
 
     # Then: it returns the list of ingredients
     expected = ["Apple", "Banana", "Orange"]
-    assert result == ["Apple", "Banana", "Wrong"]
+    assert result == expected
 
 
 def test_get_ingredients_file_does_not_exists(tmp_path: Path):
